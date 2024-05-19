@@ -2,8 +2,8 @@ package org.launchcode.techjobs.oo;
 
 import org.junit.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
+import static org.testng.Assert.*;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class JobTest {
     //TODO: Create your unit tests here
@@ -26,7 +26,26 @@ public class JobTest {
    assertEquals("Quality control", demoJob.getPositionType().getValue());
    assertEquals("Persistence", demoJob.getCoreCompetency().getValue());
 
-
+   assertTrue(demoJob.getEmployer() instanceof Employer);
+   assertTrue(demoJob.getLocation() instanceof Location);
+   assertTrue(demoJob.getPositionType() instanceof PositionType);
+   assertTrue(demoJob.getCoreCompetency() instanceof CoreCompetency);
 }
 
+    @Test
+    public void testJobsForEquality() {
+    Job demoJob1 = new Job("demoName",
+            new Employer("demoEmployer"),
+            new Location("demoLocation"),
+            new PositionType("demoPositionType"),
+            new CoreCompetency("demoCoreCompetency"));
+    Job demoJob2 = new Job("demoName",
+            new Employer("demoEmployer"),
+            new Location("demoLocation"),
+            new PositionType("demoPositionType"),
+            new CoreCompetency("demoCoreCompetency"));
+
+   assertNotEquals(demoJob1,demoJob2);
+//     assertFalse(demoJob1.equals(demoJob2));
     }
+}
