@@ -89,4 +89,24 @@ public class Job {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    @Override
+    public String toString() {
+
+        String nameString = name.isEmpty() ? "Data not available" : name;
+        String employerString = (employer != null && !employer.getValue().isEmpty()) ? employer.getValue() : "Data not available";
+        String locationString = (location != null && !location.getValue().isEmpty()) ? location.getValue() : "Data not available";
+        String positionTypeString = (positionType != null && !positionType.getValue().isEmpty()) ? positionType.getValue() : "Data not available";
+        String coreCompetencyString = (coreCompetency != null && !coreCompetency.getValue().isEmpty()) ? coreCompetency.getValue() : "Data not available";
+
+//
+        return System.lineSeparator() +
+                "ID: " + id + System.lineSeparator() +
+                "Name: " + nameString + System.lineSeparator() +
+                "Employer: " + employerString  + System.lineSeparator() +
+                "Location: " + locationString  + System.lineSeparator() +
+                "Position Type: " + positionTypeString  + System.lineSeparator() +
+                "Core Competency: " + coreCompetencyString  + System.lineSeparator();
+    }
+
 }
